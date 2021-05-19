@@ -1,0 +1,35 @@
+{% extends "layout/basic.html" %}
+{% load static %}
+{% block section %}
+
+
+<div class="row add-button">
+    <div class="col-xs-4">
+           <a href="{% url 'create_material_title' %}" class="btn btn-flat bg-orange"><i class="fas fa-file-excel-o"></i>Добавить материал</a>
+       </div>
+</div>
+
+<div class="row" style="width: 80em;">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover" id="userTable">
+
+                    <tbody>
+                        
+                        {% for t in titles %}
+                        <tr>
+                                <td>{{ t.title }}</td>
+                                <td><a id = "a" href="{% url 'delete_material_title' t.pk %}" onclick="return confirm(&#39;Вы уверены?&#39;)" class="btn btn-danger btn-flat"><i class="fas fa-trash" aria-hidden="true"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

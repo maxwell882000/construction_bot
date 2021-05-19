@@ -1,0 +1,33 @@
+{% extends 'layout/basic.html' %}
+{% block section %}
+<div class="row add-button">
+    <div class="col-xs-10">
+        <a href="{% url 'material' object.title %}" class="btn btn-flat bg-orange"><i class=""></i>Материалы</a>
+        <a href="{% url 'salary' object.title %}" class="btn btn-flat bg-orange"><i class=""></i>Иш хакки</a>
+        <a href="{% url 'create_material' object.title %}" class="btn btn-flat bg-orange"><i class="fas fa-plus"></i>Добавить материал</a>
+        <a href="{% url 'create_salary' object.title %}" class="btn btn-flat bg-orange"><i class="fas fa-plus"></i>Добавить иш хакки</a>
+    </div>
+</div>
+<div class = "row">
+    <div class="col-xs-12">
+        <div class="box-body">
+            <form method = "post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      
+                      {{ field.errors }} 
+                      {{ field.label_tag }} {{ field }}
+
+                </div>
+            </div>
+            {% endfor %}
+            <input class="bg-orange" type="submit" value="Изменить" id = "button">  
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}
